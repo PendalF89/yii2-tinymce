@@ -12,7 +12,7 @@
     "prefer-stable" : true,
     "require": {
         "yiisoft/yii2": "*",
-        "tinymce/tinymce-dist": "*"
+        "tinymce/tinymce": "*"
     },
     "autoload": {
         "psr-4": {
