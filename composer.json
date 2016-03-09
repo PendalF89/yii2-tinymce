@@ -1,7 +1,7 @@
 {
     "name": "pendalf89/yii2-tinymce",
     "description": "Yii2 TinyMCE widget",
-    "license": "GNU GPLv2",
+    "license": "MIT",
     "authors": [
         {
             "name": "PendalF",
