@@ -37,7 +37,8 @@ use pendalf89\tinymce\TinyMce;
             "insertdatetime media table contextmenu paste"
         ],
         'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-    ]
+    ],
+    'triggerSaveOnBeforeValidateForm' => true, // Переключатель необходимости сохранения окна редактирования в поле textarea перед валидацией формы
 ]); ?>
 ```
 
