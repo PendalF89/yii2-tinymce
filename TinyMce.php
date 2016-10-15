@@ -42,7 +42,7 @@ class TinyMce extends InputWidget
      */
     protected function registerClientScript()
     {
-        $is = [];
+        $js = [];
         $id = $this->options['id'];
         TinyMceAsset::register($this->view);
         $this->clientOptions['selector'] = "#{$id}";
