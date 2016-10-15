@@ -17,6 +17,11 @@ class TinyMce extends InputWidget
      */
     public $clientOptions = [];
 
+    /** 
+     * @var bool whether to set the on change event for the editor. This is required to be able to validate data.
+     */
+    public $triggerSaveOnBeforeValidateForm = true;
+
     /**
      * @inheritdoc
      */
@@ -37,8 +42,10 @@ class TinyMce extends InputWidget
      */
     protected function registerClientScript()
     {
+        $is = [];
+        $id = $this->options['id'];
         TinyMceAsset::register($this->view);
-        $this->clientOptions['selector'] = "#{$this->options['id']}";
+        $this->clientOptions['selector'] = "#{$id}";
 
         if (!empty($this->clientOptions['language'])) {
             $language_url = LanguageAsset::register($this->view)->baseUrl . "/{$this->clientOptions['language']}.js";
@@ -46,6 +53,11 @@ class TinyMce extends InputWidget
         }
 
         $options = Json::encode($this->clientOptions);
-        $this->view->registerJs("tinymce.init($options);");
+        $js[] = "tinymce.init($options);";
+        
+        if ($this->triggerSaveOnBeforeValidateForm) {
+            $js[] = "$('#{$id}').parents('form').on('beforeValidate', function() { tinymce.triggerSave(); });";
+        }
+        $this->view->registerJs(implode("\n", $js));
     }
 }
